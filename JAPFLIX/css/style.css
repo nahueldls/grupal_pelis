@@ -30,3 +30,7 @@ main {
 .listado {
     color: #ffffff;
 }
+
+.rigth {
+    margin-left: 600px;
+}

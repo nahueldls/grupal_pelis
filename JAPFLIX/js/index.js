@@ -4,7 +4,7 @@ let conteiner = document.getElementById("content");
 
 const pelis = await fetch(`https://japceibal.github.io/japflix_api/movies-data.json`)
 .then( response => response.json())
-console.log( );
+// console.log( );
 
 let u = 0;
 let stars = ""
@@ -25,7 +25,7 @@ function showContent(list) {
         u = 0
         conteiner.innerHTML += divforstars
         conteiner.innerHTML += ` 
-        <p  class="listado id">${list[i].title}</p>
+        <p  class="listado data" id="${list[i].id}">${list[i].title}</p>
         <p class="desc" style="color:darkgrey">${list[i].tagline}${stars}</p>`
         u = 0
         divforstars = ""
@@ -64,16 +64,6 @@ buscador_button.addEventListener("click", () => {
             showContent(pelis.filter( filtrados => filtrados.overview.toLowerCase().includes(input.value))) || 
             showContent(pelis.filter((peli) => peli.genres.some((genre) => conditionForFilteringGenre(genre))))
 
-           
-
-            
-            // for (let i = 0; i < pelis.length; i++) {
-            //     pelis.forEach(peli => { //recorrer
-            //         console.log(peli)
-            //         showContent(pelis.filter( filtrados => filtrados.genres[i].name.toLowerCase().includes(input.value)))
-            //     });
-                
-            // } 
         }
     } else {
         conteiner.innerHTML = ""
@@ -87,34 +77,14 @@ de title o genres o tagline u overview. A TENER EN CUENTAA*/
 
 /* tengo que hacer que la busqueda coincida con el title o genres o tagline u overview*/
 
-// let h = "";  
-// let j = 0;
-// for (let i = 0; i < pelis[i].genres[i].length; i++) {          
-//     h = pelis[i].genres[i].name;
-//     console.log(h)
-// 
-// let h = "";
-//  for (let i = 0; i < pelis.length; i++) {
-    // pelis.forEach(peli => {
-        // if ( peli.genres[i].name == "action") {
-        // console.log(peli.genres)
-        // }
-    // });
-    // h += pelis[i].genres[i].name
-    // console.log(h)
-    
-// } 
 
-// console.log(pelis[1].genres[0])
 let canvas = document.getElementById("offcanvasExample");
-let class_object = document.getElementsByClassName("id");
+let class_object = document.getElementsByClassName("data");
+
 
 function clickForData() {
 
-
-
     for (let i = 0; i < pelis.length; i++) {
-
     canvas.innerHTML = `
     <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasExampleLabel">${pelis[i].title}</h5>
@@ -138,7 +108,7 @@ function clickForData() {
   </div>`
     }
 }
-conteiner.addEventListener("click",clickForData)
+// conteiner.addEventListener("click",)
 
 // let class_object = document.getElementsByClassName("id");
 // function clickForData() {
@@ -157,3 +127,19 @@ buscador_button.addEventListener("click", clickForData)
 //     }
 // }
 // saveID()
+
+/* 1)acceder al objeto */
+
+function saveID() {
+    let pelicula = pelis[0].title
+    for (let i = 0; i < pelis.length; i++) {
+    
+    
+    }
+}
+
+// let pelicula = pelis[0].title
+// console.log(pelicula)
+
+
+saveID()

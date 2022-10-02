@@ -9,9 +9,10 @@ const pelis = await fetch(`https://japceibal.github.io/japflix_api/movies-data.j
 let u = 0;
 let stars = ""
 let divforstars = document.getElementById("stars")
+
 function showContent(list) {
     for (let i = 0; i < list.length; i++) {
-         // ---Estrellas---en función de average
+         // ---Estrellas--- en función de average
          while ( u < list[i].vote_average) {
             stars += `<span class="fa fa-star checked"></span>`
             u += 2
@@ -23,41 +24,19 @@ function showContent(list) {
             }
         }
         u = 0
-        conteiner.innerHTML += divforstars
         conteiner.innerHTML += ` 
-        <p  class="listado data" id="${list[i].id}">${list[i].title}</p>
+        <p  class="listado data" >${list[i].title}</p>
         <p class="desc" style="color:darkgrey">${list[i].tagline}${stars}</p>`
-        u = 0
-        divforstars = ""
         stars = ""
-        
-        // // ---Estrellas---en función de average
-        // while ( u < list[i].vote_average) {
-        //     stars += `<span class="fa fa-star checked"></span>`
-        //     u += 1
-        // }
-        // divforstars += stars
-        // u = 0
-        // conteiner.innerHTML += divforstars
-        // divforstars = ""
-        // stars = ""
-
     }
-    // let u;
-    // for ( u = 0; u < list.length; u++) {
-
-    // }
 }
 
-
-/* Cuando el usuario presiona el botón buscar, y si previamente ingresó algún valor en el campo de búsqueda, 
-deberán mostrarle un listado con las películas que coincidan con dicha búsqueda en sus atributos 
-de title o genres o tagline u overview. A TENER EN CUENTAA*/
 let i = 0;
+const conditionForFilteringGenre = (genre) => genre.name.toLowerCase().includes(input.value.toLowerCase());
 buscador_button.addEventListener("click", () => {
     if ( conteiner.innerHTML == "") {
         if ( input.value !== ""){
-            const conditionForFilteringGenre = (genre) => genre.name.toLowerCase().includes(input.value.toLowerCase());
+            // const conditionForFilteringGenre = (genre) => genre.name.toLowerCase().includes(input.value.toLowerCase());
 
             showContent(pelis.filter( filtrados => filtrados.title.toLowerCase().includes(input.value))) || 
             showContent(pelis.filter( filtrados => filtrados.tagline.toLowerCase().includes(input.value))) ||
@@ -65,27 +44,26 @@ buscador_button.addEventListener("click", () => {
             showContent(pelis.filter((peli) => peli.genres.some((genre) => conditionForFilteringGenre(genre))))
 
         }
-    } else {
-        conteiner.innerHTML = ""
-        //showContent(pelis.filter( filtrados => filtrados.title.toLowerCase().includes(input.value)))
-    }
+     } else {
+          conteiner.innerHTML = ""
+         //showContent(pelis.filter( filtrados => filtrados.title.toLowerCase().includes(input.value)))
+            showContent(pelis.filter( filtrados => filtrados.title.toLowerCase().includes(input.value))) || 
+            showContent(pelis.filter( filtrados => filtrados.tagline.toLowerCase().includes(input.value))) ||
+            showContent(pelis.filter( filtrados => filtrados.overview.toLowerCase().includes(input.value))) || 
+            showContent(pelis.filter((peli) => peli.genres.some((genre) => conditionForFilteringGenre(genre))))
+     }
 })
-
-/* Cuando el usuario presiona el botón buscar, y si previamente ingresó algún valor en el campo de búsqueda, 
-deberán mostrarle un listado con las películas que coincidan con dicha búsqueda en sus atributos 
-de title o genres o tagline u overview. A TENER EN CUENTAA*/
-
-/* tengo que hacer que la busqueda coincida con el title o genres o tagline u overview*/
 
 
 let canvas = document.getElementById("offcanvasExample");
 let class_object = document.getElementsByClassName("data");
 
 
-function clickForData() {
+function showCanvaData() {
 
     for (let i = 0; i < pelis.length; i++) {
-    canvas.innerHTML = `
+
+            canvas.innerHTML = `
     <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasExampleLabel">${pelis[i].title}</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -108,38 +86,18 @@ function clickForData() {
   </div>`
     }
 }
-// conteiner.addEventListener("click",)
 
-// let class_object = document.getElementsByClassName("id");
-// function clickForData() {
-//     for (let i = 0; i < pelis.length; i++) {
-//         console.log(class_object[i])
-        
-//     }
-// }
-
-buscador_button.addEventListener("click", clickForData)
-
-
-// function saveID() {
-//     for ( let i = 0; i < pelis.length; i++) {
-//         console.log(pelis[i].id)
-//     }
-// }
-// saveID()
-
-/* 1)acceder al objeto */
-
-function saveID() {
-    let pelicula = pelis[0].title
-    for (let i = 0; i < pelis.length; i++) {
-    
-    
-    }
+function clickContainer() {
+//console.log que muestre id de objeto en pantalla
+console.log()
 }
 
-// let pelicula = pelis[0].title
-// console.log(pelicula)
+conteiner.addEventListener("click",clickContainer)
 
 
-saveID()
+/*-------------objetivos--------
+Qué necesito? identificar el title de un objeto al darle click.
+Para qué? Es una forma de poder mostrar los datos
+
+----------------organizando----------
+Le doy click a un onjeto y sucede una acción. (le doy click a un container)*/

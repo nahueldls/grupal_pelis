@@ -25,8 +25,8 @@ function showContent(list) {
         }
         u = 0
         conteiner.innerHTML += ` 
-        <p  class="listado data" >${list[i].title}</p>
-        <p class="desc" style="color:darkgrey">${list[i].tagline}${stars}</p>`
+        <div id="${list[i].id}"><li class="listado data" >${list[i].title}</li>
+        <li class="desc" style="color:darkgrey">${list[i].tagline}${stars}</li></div>`
         stars = ""
     }
 }
@@ -55,44 +55,47 @@ buscador_button.addEventListener("click", () => {
 })
 
 
-let canvas = document.getElementById("offcanvasExample");
+let canvas = document.getElementById("lista");
 let class_object = document.getElementsByClassName("data");
 
 
-function showCanvaData() {
+// function showCanvaData() {
 
-    for (let i = 0; i < pelis.length; i++) {
+//     for (let i = 0; i < pelis.length; i++) {
 
-            canvas.innerHTML = `
-    <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">${pelis[i].title}</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <div>
-    ${pelis[i].overview} 
-    </div>
-    <div class="dropdown mt-3">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-          More
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item">Year</a></li>
-        <li><a class="dropdown-item">Runtime</a></li>
-        <li><a class="dropdown-item">Budget</a></li>
-        <li><a class="dropdown-item">Revenue</a></li>
-      </ul>
-    </div>
-  </div>`
-    }
-}
+//             canvas.innerHTML = `
+//             <div id="content" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></div>
+//     <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasExample${i}" aria-labelledby="offcanvasExampleLabel">
+//     <div class="offcanvas-header">
+//     <h5 class="offcanvas-title" id="offcanvasExampleLabel">${pelis[i].title}</h5>
+//     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+//   </div>
+//   <div class="offcanvas-body">
+//     <div>
+//     ${pelis[i].overview} 
+//     </div>
+//     <div class="dropdown mt-3">
+//       <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+//           More
+//       </button>
+//       <ul class="dropdown-menu">
+//         <li><a class="dropdown-item">Year</a></li>
+//         <li><a class="dropdown-item">Runtime</a></li>
+//         <li><a class="dropdown-item">Budget</a></li>
+//         <li><a class="dropdown-item">Revenue</a></li>
+//       </ul>
+//     </div>
+//   </div>
+//   </div>`
+//     }
+// }
 
-function clickContainer() {
-//console.log que muestre id de objeto en pantalla
-console.log()
-}
+// function clickContainer() {
+// console.log que muestre id de objeto en pantalla
+// console.log()
+// }
 
-conteiner.addEventListener("click",clickContainer)
+// conteiner.addEventListener("click",showCanvaData)
 
 
 /*-------------objetivos--------

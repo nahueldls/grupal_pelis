@@ -11,6 +11,11 @@ let u = 0;
 let stars = ""
 let divforstars = document.getElementById("stars")
 let title = document.getElementById('offcanvasTopLabel');
+let overview = document.getElementById("body")
+let genres = document.getElementById("genres");
+let runtime = document.getElementById("runtime")
+let budget = document.getElementById("budget");
+let revenue = document.getElementById("revenue");
 
 conteiner.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -19,6 +24,12 @@ conteiner.addEventListener('click', (e) => {
     const peli_clickeada = pelis.find((peli) => peli.id == peli_id);
 
     title.textContent = peli_clickeada.title;
+    overview.textContent = peli_clickeada.overview;
+
+    // -----------------BOTÓN-------------------
+    runtime.innerHTML = "Runtime: " + peli_clickeada.runtime + "min"
+    budget.innerHTML = "Budget: " + peli_clickeada.budget
+    revenue.innerHTML = "Revenue: " + "$"+peli_clickeada.revenue
 
     control.show();
 

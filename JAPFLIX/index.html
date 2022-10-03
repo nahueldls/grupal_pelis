@@ -15,12 +15,27 @@
 <body class="bg-dark">
   <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasTopLabel">Offcanvas top</h5>
+      <h5 class="offcanvas-title" id="offcanvasTopLabel"></h5>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      ...
+      <p id="body"></p> 
+      <hr>
+      <p id="genres"></p>
     </div>
+    
+    <div class="dropdown mt-3">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+        More
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" id="year"></a></li>
+        <li><a class="dropdown-item" id="runtime"></a></li>
+        <li><a class="dropdown-item" id="budget"></a></li>
+        <li><a class="dropdown-item" id="revenue"></a></li>
+      </ul>
+    </div>
+
   </div>
   
   <main>

@@ -6,17 +6,32 @@ const pelis = await fetch(`https://japceibal.github.io/japflix_api/movies-data.j
 .then( response => response.json())
 // console.log( );
 
+const control = new bootstrap.Offcanvas('#offcanvasTop');
 let u = 0;
 let stars = ""
 let divforstars = document.getElementById("stars")
+let title = document.getElementById('offcanvasTopLabel');
+
+conteiner.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    const peli_id = e.target.id;
+    const peli_clickeada = pelis.find((peli) => peli.id == peli_id);
+
+    title.textContent = peli_clickeada.title;
+
+    control.show();
+
+})
 
 function showContent(list) {
     for (let i = 0; i < list.length; i++) {
          // ---Estrellas--- en función de average
-         while ( u < list[i].vote_average) {
+        while ( u < list[i].vote_average) {
             stars += `<span class="fa fa-star checked"></span>`
             u += 2
         }
+
         if ( u < 10) {
             while ( u < 10) {
                 stars += `<span class="fa fa-star"></span>`
@@ -25,8 +40,13 @@ function showContent(list) {
         }
         u = 0
         conteiner.innerHTML += ` 
-        <div id="${list[i].id}"><li class="listado data" >${list[i].title}</li>
-        <li class="desc" style="color:darkgrey">${list[i].tagline}${stars}</li></div>`
+            <div class="position-relative">
+                <div class="position-absolute w-100 h-100 top-0" id="${list[i].id}"></div>
+                <li class="listado data" >${list[i].title}</li>
+                <li class="desc" style="color:darkgrey">${list[i].tagline}${stars}</li>
+            </div>
+        `
+        
         stars = ""
     }
 }
@@ -55,7 +75,8 @@ buscador_button.addEventListener("click", () => {
 })
 
 
-let canvas = document.getElementById("lista");
+// let canvas = document.getElementsByClassName("offcanvas")[0];
+
 let class_object = document.getElementsByClassName("data");
 
 
